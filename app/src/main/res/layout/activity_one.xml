@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.item.nagigation.activity.OneActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/action_bar" />
+    </android.support.design.widget.AppBarLayout>
+
+    <FrameLayout
+        android:id="@+id/lay_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="52dp"
+        android:background="@color/colorAccent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_action"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="68dp"
+        android:layout_marginEnd="16dp"
+        android:padding="20dp"
+        android:src="@drawable/ic_group"
+        android:tint="@color/white"
+        android:translationY="76dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:elevation="4dp"
+        app:pressedTranslationZ="10dp" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_gravity="bottom"
+        android:background="#ffffff"
+        android:elevation="3dp"
+        android:outlineProvider="bounds"
+        android:translationZ="8dp"
+        app:itemIconTint="@color/text_nav"
+        app:itemTextColor="@color/text_nav"
+        app:menu="@menu/navigation_items"
+        tools:targetApi="lollipop"
+        tools:visibility="visible" />
+</android.support.design.widget.CoordinatorLayout>

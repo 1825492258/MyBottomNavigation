@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Navigation</string>
+    <string name="entity" />
+    <string name="title_home">Active</string>
+    <string name="title_group">Group</string>
+    <string name="title_contact">Contact</string>
+</resources>
