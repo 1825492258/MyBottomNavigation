@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.item.nagigation.activity.OneActivity;
+import com.item.nagigation.activity.ThreeActivity;
 import com.item.nagigation.activity.TwoActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.btn_one).setOnClickListener(this);
         findViewById(R.id.btn_two).setOnClickListener(this);
+        findViewById(R.id.btn_three).setOnClickListener(this);
     }
 
     @Override
@@ -26,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_two:
                 startActivity(new Intent(this, TwoActivity.class));
+                break;
+            case R.id.btn_three:
+                startActivity(new Intent(this, ThreeActivity.class));
                 break;
         }
     }
