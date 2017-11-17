@@ -119,4 +119,57 @@ BottomSheetBehavior,BottomNavigationView,DrawerLayout
             }
         }
     }
+### Glide 为图片添加蒙板和着色的效果
+    Glide.with(this)
+            .load(R.drawable.bg_src_tianjin)
+            .into(new SimpleTarget<Drawable>() {
+                @Override
+                public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+                    // 拿到Glide的Drawable
+                    Drawable drawable = resource.getCurrent();
+                    // 使用适配类进行包装
+                    drawable = DrawableCompat.wrap(drawable);
+                    // 设置着色的效果和颜色，蒙板模式
+                    drawable.setColorFilter(getResources().getColor(R.color.test_two),
+                            PorterDuff.Mode.SCREEN);
+                    // 设置给ImageView
+                    img_bg.setImageDrawable(drawable);
+                }
+            });
+    <ImageView
+        android:id="@+id/img_bg"
+        android:layout_width="match_parent"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:foreground="#30000000"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <!--android:foreground="#30000000" 遮罩颜色-->
+
+### 5.为APP启动页 跟换背景的颜色
+    使用属性动画来实现，设置开始和结束的颜色
+    /**
+     * 给背景设置一个动画
+     * @param endProgress 动画的结束进度
+     * @param endCallback 动画结束时触发
+     */
+    private void startAnim(float endProgress, final Runnable endCallback) {
+        // 获取一个最终的颜色
+        int finalColor = getResources().getColor(R.color.white);
+        ArgbEvaluator evaluator = new ArgbEvaluator();
+        int endColor = (int) evaluator.evaluate(endProgress, mBgDrawable.getColor(), finalColor);
+        // 构建一个属性动画
+        ValueAnimator valueAnimator = ObjectAnimator.ofObject(this, property, evaluator, endColor);
+        valueAnimator.setDuration(1500);
+        valueAnimator.setIntValues(mBgDrawable.getColor(), endColor); // 开始结束值
+        valueAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                // 结束时触发
+                endCallback.run();
+            }
+        });
+        valueAnimator.start();
+    }
 

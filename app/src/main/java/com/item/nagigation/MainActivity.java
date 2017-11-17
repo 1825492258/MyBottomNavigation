@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.item.nagigation.activity.FourActivity;
 import com.item.nagigation.activity.OneActivity;
 import com.item.nagigation.activity.ThreeActivity;
 import com.item.nagigation.activity.TwoActivity;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_one).setOnClickListener(this);
         findViewById(R.id.btn_two).setOnClickListener(this);
         findViewById(R.id.btn_three).setOnClickListener(this);
+        findViewById(R.id.btn_four).setOnClickListener(this);
     }
 
     @Override
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_three:
                 startActivity(new Intent(this, ThreeActivity.class));
+                break;
+            case R.id.btn_four:
+                startActivity(new Intent(this, FourActivity.class));
                 break;
         }
     }
